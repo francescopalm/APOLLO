@@ -33,6 +33,8 @@ def main():
         url_info = url_enricher.get_url_info(url_to_analyze)
     else:
         url_info = None
+    
+    #print (mail)
     print(f"Classifying the email with GPT... (model = {MODEL})\n")
     # Call GPT for email phishing classification
     classification_response, warning_msg = llm_prompter.classify_email(mail, url_info, model=MODEL)
