@@ -62,8 +62,16 @@ dialogs produced by APOLLO. Specifically:
 
 # Cite this work
 
-G. Desolda, F. Greco, and L. Viganò (2024). _APOLLO: A GPT-based tool to detect phishing emails and generate explanations that warn users._ Preprint: https://arxiv.org/abs/2410.07997
+Giuseppe Desolda, Francesco Greco, and Luca Vigano. 2025. APOLLO: A GPT-based tool to detect phishing emails and generate explanations that warn users. Proc. ACM Hum.-Comput. Interact. 9, 4, Article EICS003 (June 2025), 33 pages. doi: [10.1145/3733049](https://doi.org/10.1145/3733049)
 
+
+# Acknowledgments
+
+This work has been supported by the Italian Ministry of University and Research (MUR) and by the European Union-NextGenerationEU, under grant PRIN 2022 PNRR "DAMOCLES: Detection And Mitigation Of Cyber attacks that exploit human vuLnerabilitiES" (Grant P2022FXP5B) CUP: H53D23008140001.
+
+This work is partially supported by the co-funding of the European Union - Next Generation EU: NRRP Initiative, Mission 4, Component 2, Investment 1.3 - Partnerships extended to universities, research centres, companies and research D.D. MUR n. 341 del 5.03.2022 – Next Generation EU (PE0000014 – "Security and Rights In the CyberSpace – SERICS" - CUP: H93C22000620001).
+
+The research of Francesco Greco is funded by a PhD fellowship within the framework of the Italian "D.M. n. 352, April 9, 2022"- under the National Recovery and Resilience Plan, Mission 4, Component 2, Investment 3.3 - PhD Project "Investigating XAI techniques to help user defend from phishing attacks", co-supported by "Auriga S.p.A." (CUP H91I22000410007).
 
 # References
 
