@@ -1,6 +1,24 @@
 
 # APOLLO (Advanced Phishing preventiOn with Large Language model-based Oracle)
 
+**WARNING: This is a fork of original project.**
+
+This repository is a **fork** of the APOLLO project ([https://github.com/IVU-Laboratory/APOLLO](https://github.com/IVU-Laboratory/APOLLO)).
+
+### Goal of This Fork
+
+The primary objective of this fork is to **adapt the APOLLO project** for seamless integration and operation with a **APOLLO Chrome Extension** I have developed.
+
+The modifications mainly concern the communication protocols and necessary API endpoints to ensure the two components can exchange data effectively.
+
+### Key Changes in This Repository
+
+* **Flask Implementation:** Implemented the Flask WSGI framework as **a** middleware to enable communication with the APOLLO Chrome Extension.
+* **Configuration Files:** Updated configuration settings to properly route requests originating from the extension.
+* **Minor bug fixes:** Fixed small issues in `llm_prompter.py`.
+* **General Refinements:** Numerous other minor code adjustments, dependency updates, and internal restructuring to ensure compatibility with Flask and the APOLLO Chrome Extension.
+
+---
 APOLLO is a tool written in Python 3.10.12 and powered by GPT-4o ([gpt-4o-2024-13-5]([url](https://platform.openai.com/docs/models/gpt-4o))) to:
 
 - **classify** an email as **phishing** or legitimate, and
