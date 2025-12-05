@@ -7,7 +7,7 @@ This repository is a **fork** of the APOLLO project ([https://github.com/IVU-Lab
 
 ### Goal of This Fork
 
-The primary objective of this fork is to **adapt the APOLLO project** for seamless integration and operation with a **APOLLO Chrome Extension** I have developed.
+The primary objective of this fork is to **adapt the APOLLO project** for seamless integration and operation with a **([APOLLO Chrome Extension](https://github.com/francescopalm/APOLLO-Extension))** I have developed.
 
 The modifications mainly concern the communication protocols and necessary API endpoints to ensure the two components can exchange data effectively.
 
