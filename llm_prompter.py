@@ -4,6 +4,7 @@ import openai
 import json
 import os
 import asyncio
+import config
 
 
 SEED = 42
@@ -19,7 +20,7 @@ def get_batch_model():
     return MODEL_BATCH
 
 
-def classify_email(email_input, feature_to_explain=None, url_info=None, explanations_min=3, explanations_max=6,
+def classify_email(email_input, url_info=None, feature_to_explain=None, explanations_min=3, explanations_max=6,
                    model=MODEL):
     # Initial Prompt
     messages = [
@@ -89,7 +90,7 @@ def classify_email(email_input, feature_to_explain=None, url_info=None, explanat
     # Try getting the JSON object from the response
     try:
         # remove any non-UTF-8 characters
-        classification_response = classification_response.decode('ascii', 'ignore').encode("ascii")
+        # classification_response = classification_response.decode('ascii', 'ignore').encode("ascii")
         # decode the string into a JSON
         classification_response = json.loads(classification_response)
         print(classification_response)
@@ -106,6 +107,7 @@ def classify_email(email_input, feature_to_explain=None, url_info=None, explanat
             # Otherwise, we ask GPT to produce the warning message
             if feature_to_explain is None:
                 # Automatically take the most relevant feature
+                # Modification by PALMISANO Francesco: The request not to enclose the explanation in quotation marks was inserted into the prompt.
                 messages.append(
                     {"role": "user", "content": """
               Now take the most relevant feature among the ones in your explanations and construct a brief explanation message (max 50 words) directed to naive users (with no knowledge of cybersecurity) that will follow this structure:`
@@ -119,7 +121,7 @@ def classify_email(email_input, feature_to_explain=None, url_info=None, explanat
               Another example of explaining that the email is suspicious because a domain linked in the email is hosted in a country with bad reputation would be:
               "The host of the target website is in [COUNTRY], which is where most attacks originate. Sharing your private information here is risky."
 
-              Desired format:
+              Desired format (do not use quotation marks to enclose the explanation):
               [description of the feature]. [hazard explanation]. [consequences of a successful attack].
               """}
                 )
@@ -148,7 +150,7 @@ def classify_email(email_input, feature_to_explain=None, url_info=None, explanat
                 temperature=TEMPERATURE,
                 messages=messages
             )
-            classification_response = response.choices[0].message.content
+            classification_response = json.loads(response.choices[0].message.content)
             explanation_response = response_2.choices[0].message.content
         return classification_response, explanation_response
     else:  # Error: response in wrong format
@@ -157,9 +159,11 @@ def classify_email(email_input, feature_to_explain=None, url_info=None, explanat
 
 
 def initialize_openAI():
-    openai.api_key = os.getenv('OPENAI_API_KEY')
+    # Modification by PALMISANO Francesco: Replacement of 'os.getenv()' with reading API KEYs from 'config.json'
+    #openai.api_key = os.getenv('OPENAI_API_KEY')
+    #openai.api_key = config.getconfig('OPENAI_API_KEY')
     global client
-    client = openai.OpenAI()  # use OpenAI apis as the client
+    client = openai.OpenAI(api_key=config.getconfig('OPENAI_API_KEY'))  # use OpenAI apis as the client
 
 
 def classify_email_minimal(email_input, url_info=None, model=MODEL):

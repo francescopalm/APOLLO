@@ -9,12 +9,13 @@ MODEL = "gpt-4o-2024-05-13"
 
 
 def main():
-    load_dotenv()
+    #load_dotenv()
     llm_prompter.initialize_openAI()  # Statically set the API key for OpenAI
 
-    email_filename = input("Please insert the name of the email file to classify (.eml format)")
+    # Modification by PALMISANO Francesco: Direct opening of the file 'current.eml'
+    #email_filename = input("Please insert the name of the email file to classify (.eml format)")
     # Open and preprocess an email
-    with open(email_filename, "rb") as email_byes:
+    with open("current.eml", "rb") as email_byes:
         mail = email_byes.read()
         mail = preprocessor.preprocess_email(mail)
         # Print or use the extracted subject, header, and body as needed
@@ -41,6 +42,8 @@ def main():
     print(classification_response)
     print(warning_msg)
 
+    # Modification by PALMISANO Francesco: Return of the classification result and explanation
+    return classification_response, warning_msg
 
 if __name__ == "__main__":
     main()
